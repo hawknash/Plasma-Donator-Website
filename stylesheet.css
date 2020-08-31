@@ -1,0 +1,51 @@
+<style>
+      a {
+  color: black !important;
+}
+table,tr,td,th {
+  border-collapse: collapse;
+  padding: 15px
+}
+.brand-logo,
+h2 {
+  font-family: "Grand Hotel", cursive;
+}
+
+input[type="radio"]{
+    -webkit-appearance: radio;
+    opacity: 100% !important;
+    pointer-events: auto !important;
+    position: relative !important;
+}
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid yellow !important;
+  box-shadow: 0 1px 0 0 yellow !important;
+}
+.input-field input[type="password"]:focus {
+  border-bottom: 1px solid yellow !important;
+  box-shadow: 0 1px 0 0 yellow !important;
+}
+.input-field input[type="email"]:focus {
+  border-bottom: 1px solid yellow !important;
+  box-shadow: 0 1px 0 0 yellow !important;
+}
+
+.mycard{
+  border:2px solid yellow;
+  padding:20px;
+  width:50%;
+  margin:auto;
+  margin-top: 2%;
+  box-shadow:4px 1px 20px black !important;
+  text-align: center;
+
+
+}
+.toasts{
+  background:linear-gradient(#FFDD00,#FBB034);
+  color: black
+}
+select{
+  display: inline !important;
+}
+    </style>
