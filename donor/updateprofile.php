@@ -24,21 +24,7 @@ h2 {
 </head>
 <body>
 
-<nav style="height:100px;background:white;">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><img src="../pasmaLogo.PNG" style="width:150px;height:100px" ></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="viewrequest.php">Home</a></li>
-       
-        <li><a href="sendrequest.php">Send Request</a></li>
-        <li><a href="index.php">View Request</a></li>
-        <li><a href="updateprofile.php">Update Profile</a></li>
-        <li><a href="changepassword.php">Change Password</a></li>
-        
-         <li><a href="../contact.php">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
+<?php include('header.php'); ?>
 
 <?php
 
@@ -51,7 +37,7 @@ if($_SESSION['donorstatus']=="")
 <?php include('function.php'); ?>
 <?php
       
-  $cn=mysqli_connect("localhost","root","","bloodbank");
+  $cn=mysqli_connect("localhost","root","","plasma");
       $s="select * from donarregistration where email='" . $_SESSION["email"] . "'";
       
   $q=mysqli_query($cn,$s);
@@ -91,7 +77,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text"  name="t1">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text"  value="<?php echo @$name;  ?>" name="t1">
     </div>
   </div>
   <div class="md:flex md:items-center mb-6">
@@ -101,7 +87,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="number" placeholder="0" name="t2">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="number" placeholder="0" name="t2" value="<?php echo @$age;?>">
     </div>
   </div>
   <div class="md:flex md:items-center mb-6">
@@ -111,7 +97,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text"  name="t3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text"  name="t3" value="<?php echo @$mobile;?>">
     </div>
   </div>
 
@@ -122,11 +108,11 @@ if($_SESSION['donorstatus']=="")
         Gender
       </label></div>
     <label class="inline-flex items-center">
-      <input type="radio" class="form-radio" name="r1" value="male">
+      <input type="radio" class="form-radio" name="r1" value="male"  <?php if($gender=="male"){ echo "checked" ;}  ?>>
       <span class="ml-2">Male</span>
     </label>
     <label class="inline-flex items-center ml-6">
-      <input type="radio" class="form-radio" name="r1" value="female">
+      <input type="radio" class="form-radio" name="r1" value="female" <?php if($gender=="female"){ echo "checked" ;}  ?>>
       <span class="ml-2">Female</span>
     </label>
   </div>

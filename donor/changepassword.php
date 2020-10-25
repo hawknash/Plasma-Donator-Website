@@ -25,6 +25,7 @@ h2 {
 
 
 <body>
+  <?php include('header.php'); ?>
 
 <?php
 
@@ -35,21 +36,7 @@ if($_SESSION['donorstatus']=="")
 }
 ?>
 
-<nav style="height:100px;background:white;">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><img src="../pasmaLogo.PNG" style="width:150px;height:100px" ></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="">Home</a></li>
-       
-        <li><a href="">Send Request</a></li>
-        <li><a href="">View Request</a></li>
-        <li><a href="updateprofile.php">Update Profile</a></li>
-        <li><a href="changepassword.php">Change Password</a></li>
-        
-         <li><a href="../contact.php">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
+
 
 
 

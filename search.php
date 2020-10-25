@@ -32,15 +32,29 @@ h2 {
 
 .mycard{
   border:2px solid yellow;
+  border-radius: 100px;
   padding:20px;
-  width:50%;
+  width:40%;
   margin:auto;
   margin-top: 2%;
   box-shadow:4px 1px 20px black !important;
+  background-color: white;
   
 
 
 }
+
+.bg-image {
+background-image: url("searchbg.jpg");
+background-color: #cccccc;
+height: 500px;
+background-position: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
 .toasts{
   background:linear-gradient(#FFDD00,#FBB034);
   color: black
@@ -49,7 +63,7 @@ h2 {
             
 </head>
 
-<body>
+<body class="bg-image">
   <?php include('admin/function.php'); ?>
  <?php include('header.php'); ?>
 
@@ -137,7 +151,6 @@ if(isset($_POST["sbmt"]))
 }
 
 ?>
-
 
 
 

@@ -17,6 +17,17 @@ h2 {
 }
 
 
+.bg-image {
+background-image: url("searchbg.jpg");
+background-color: #cccccc;
+height: 500px;
+background-position: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
 .input-field input[type="text"]:focus {
   border-bottom: 1px solid yellow !important;
   box-shadow: 0 1px 0 0 yellow !important;
@@ -32,7 +43,7 @@ h2 {
 
 .mycard{
   border:2px solid yellow;
-  
+  background-color:white;
   width:50%;
 
   margin:auto;
@@ -54,13 +65,14 @@ h2 {
   box-shadow:4px 1px 20px #999900 !important;
   border:2px solid yellow;
   margin-top: 30px;
+  margin-bottom: 20px;
 }
 
     </style>
             
 </head>
 
-<body>
+<body class="bg-image">
   <?php include('admin/function.php'); ?>
  <?php include('header.php'); ?>
 
@@ -81,7 +93,7 @@ $s="select * from donarregistration,bloodgroup where donarregistration.b_id='". 
 ?>
     <div class="newcard">
       <div style="display: inline-block;">
-      <img src="doner_pic/<?php echo $data[8] ?>" style="width:120px;height: 150px;padding-right: 20px">
+      <img src="doner_pic/<?php echo $data[8] ?>" style="width:200px;height: 150px;padding-right: 20px">
       </div>
       <div style="display: inline-block;">
       <p><b>Name:</b> <?php echo $data[1]; ?></p>
@@ -99,31 +111,7 @@ $s="select * from donarregistration,bloodgroup where donarregistration.b_id='". 
   </div>
     
 
-    <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
+   
 
 </body>
 

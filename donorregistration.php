@@ -40,11 +40,14 @@ input[type="radio"]{
 
 .mycard{
   border:2px solid yellow;
+  border-radius: 100px;
   padding:20px;
   width:50%;
   margin:auto;
   margin-top: 2%;
+  margin-bottom: 2%;
   box-shadow:4px 1px 20px black !important;
+  background-color: white;
   text-align: center;
 
 
@@ -56,11 +59,26 @@ input[type="radio"]{
 select{
   display: inline !important;
 }
+
+.bg-image {
+background-image: url("login.jpg");
+
+background-color: #cccccc;
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+
+
+
+}
+
     </style>
     
             
 </head>
-<body>
+<body class="bg-image">
 	<?php include('admin/function.php'); ?>
 	<?php include('header.php'); ?>
 	
@@ -79,7 +97,7 @@ select{
   <td  align="center">Donor Name:</td>
   <td><input type="text" name="t1" required="required" pattern="[a-zA-Z _]{5,15}" title="please enter only character  between 5 to 15 for donor name" /></td>
 </tr>
- <tr><td class="lefttd">Gender</td><td><input name="r1" type="radio" value="male" checked="checked">Male<input name="r1" type="radio" value="female" >Female</td></tr>
+ <tr><td class="lefttd">Gender</td><td><input name="r1" type="radio" value="male" checked="checked">Male  <input name="r1" type="radio" value="female" >Female</td></tr>
 
  
 <tr>
@@ -197,6 +215,37 @@ if (file_exists($target_file)) {
   }
 }
 ?> 
+
+
+<footer class="page-footer purple">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Plasma Donator</h5>
+                <p class="grey-text text-lighten-4">Plasma Donator website is made with the aim to provide a platform where people needing plasma can request and donors can donate.
+                This might be very helpful for people in need adn can save their lives.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Know Us.</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="login.php">Login.</a></li>
+                  <li></li>
+                  <li><a class="grey-text text-lighten-3" href="sendrequest.php">Send Request.</a></li>
+                  <li></li>
+                  <li><a class="grey-text text-lighten-3" href="search.php">Search.</a></li>
+                  <li><a class="grey-text text-lighten-3" href="contact.php">Contact Us.</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="index.php">Naman and Aryamaan.</a>
+          
+            </div>
+          </div>
+        </footer>
+
 
 </body>
 </html>

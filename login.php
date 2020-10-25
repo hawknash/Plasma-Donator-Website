@@ -4,7 +4,7 @@
  <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+   
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -35,11 +35,13 @@ h2 {
 
 .mycard{
   border:2px solid yellow;
+  border-radius: 100px;
   padding:20px;
-  width:50%;
+  width:40%;
   margin:auto;
   margin-top: 2%;
   box-shadow:4px 1px 20px black !important;
+  background-color: white;
   text-align: center;
 
 
@@ -48,11 +50,24 @@ h2 {
   background:linear-gradient(#FFDD00,#FBB034);
   color: black
 }
+
+.bg-image {
+background-image: url("login.jpg");
+
+background-color: #cccccc;
+height: 500px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+ 
+
     </style>
             
 </head>
 
-<body>
+<body class="bg-image">
   <?php include('admin/function.php'); ?>
  <?php include('header.php'); ?>
 
