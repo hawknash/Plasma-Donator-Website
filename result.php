@@ -42,8 +42,9 @@ background-size: cover;
 }
 
 .mycard{
-  border:2px solid yellow;
+  border:4px solid yellow;
   background-color:white;
+  border-radius: 100px;
   width:50%;
 
   margin:auto;
@@ -62,6 +63,7 @@ background-size: cover;
 .newcard{
   width:80%;
   margin:auto;
+  border-radius: 100px;
   box-shadow:4px 1px 20px #999900 !important;
   border:2px solid yellow;
   margin-top: 30px;

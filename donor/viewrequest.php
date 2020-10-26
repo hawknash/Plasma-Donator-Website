@@ -29,19 +29,31 @@ h2 {
 
 .mycard{
   border:2px solid yellow;
+  background-color:white;
+  border-radius:50px;
   padding:20px;
   width:50%;
   margin:auto;
   margin-top: 2%;
   box-shadow:4px 1px 20px black !important;
+}
 
+.bg-image {
+background-image: url("requestbg.jpg");
+
+background-color: #cccccc;
+height: 500px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 
 }
+
     </style>
             
 </head>
 
-<body>
+<body class="bg-image">
 <?php include('header.php'); ?>
 
 

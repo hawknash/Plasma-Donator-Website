@@ -201,7 +201,8 @@ $s="select * from bloodgroup";
 </tr>
  
 <tr><td>&nbsp;</td>
-  <td><input type="submit" value="Submit" name="sbmt" style="border:0px; background:linear-gradient(#900,#D50000); width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; "></td></tr>
+  <td><input type="submit" value="Submit" name="sbmt" style="border:0px; background:linear-gradient(#FFDD00,#FBB034
+        ); width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; "></td></tr>
 </table>
 
 </form>  

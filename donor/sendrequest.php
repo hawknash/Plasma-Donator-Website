@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION)) {session_start();}  ?>
 <html>
 <head>
  <!-- Compiled and minified CSS -->
@@ -12,7 +13,8 @@
 }
 table,tr,td,th {
   border-collapse: collapse;
-  padding: 20px
+  padding: 15px;
+
 }
 .brand-logo,
 h2 {
@@ -39,7 +41,7 @@ input[type="radio"]{
 }
 
 .mycard{
-  border:2px solid yellow;
+  border:4px solid yellow;
   border-radius: 100px;
   padding:20px;
   width:50%;
@@ -47,8 +49,8 @@ input[type="radio"]{
   margin-top: 2%;
   margin-bottom: 2%;
   box-shadow:4px 1px 20px black !important;
-  background-color: white;
   text-align: center;
+  background-color:white;
 
 
 }
@@ -61,25 +63,23 @@ select{
 }
 
 .bg-image {
-background-image: url("login.jpg");
-
+background-image: url("../donorbg.jpg");
 background-color: #cccccc;
-height: 100%;
+height: 500px;
 background-position: center;
+background-attachment: fixed;
 background-repeat: no-repeat;
 background-size: cover;
-background-attachment: fixed;
-
-
 
 }
+
 
     </style>
     
             
 </head>
 <body class="bg-image">
-	<?php include('admin/function.php'); ?>
+	<?php include('../admin/function.php'); ?>
 	<?php include('header.php'); ?>
 	
 <div class="mycard">  
@@ -87,19 +87,18 @@ background-attachment: fixed;
   <form method="post" enctype="multipart/form-data">
  <table >
 
-   <tr><td colspan="2" style="text-align:center"><h2>Donor Registration</h2></td></tr>
+   <tr><td colspan="2" style="text-align:center"><h2>Send Request</h2></td></tr>
 
    
 
                    
 
 <tr>
-  <td  align="center">Donor Name:</td>
+  <td  align="center"> Name:</td>
   <td><input type="text" name="t1" required="required" pattern="[a-zA-Z _]{5,15}" title="please enter only character  between 5 to 15 for donor name" /></td>
 </tr>
- <tr><td class="lefttd">Gender</td><td><input name="r1" type="radio" value="male" checked="checked">Male  <input name="r1" type="radio" value="female" >Female</td></tr>
-
  
+<tr><td class="lefttd" align="center">Gender</td><td><input name="r1" type="radio" value="male" checked="checked">Male   <input name="r1" type="radio" value="female">Female</td></tr>
 <tr>
   <td  align="center">Age</td>
   <td><input type="text" name="t2" required="required" pattern="[0-9]{2,2}" title="please enter only  numbers between 2 to 2 for age" /></td>
@@ -146,101 +145,102 @@ $s="select * from bloodgroup";
   </tr>
  
 <tr>
-  <td >Password</td>
-  <td><input type="password" name="t6" required="required" pattern="[a-zA-Z0-9]{2,10}" title="please enter only character or numbers between 2 to 10 for password" /></td>
-</tr>
-<tr>
-  <td >Confirm Password</td>
-  <td><input type="password" name="t7" required="required" pattern="[a-zA-Z0-9 ]{2,10}" title="please enter only character or numbers between 2 to 10 for password" /></td>
+  <td  align="center">Till Required Date</td><td>
+<select name="month"  style=" width:70px" >
+<option value="1">JAN</option>
+<option value="2">FEB</option>
+<option value="1">MARCH</option>
+<option value="1">APRIL</option>
+<option value="1">MAY</option>
+<option value="1">JUNE</option>
+<option value="1">JULY</option>
+<option value="1">AUG</option>
+<option value="1">SEPT</option>
+<option value="1">OCT</option>
+<option value="1">NOV</option>
+<option value="1">DEC</option>
+</select   >
+<select name="day" style=" width:70px">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+
+<input type="text" name="year" style=" width:50px"  /></td>
 </tr>
 
 <tr>
-  <td >Uplode Pic</td><td><input type="file" name="t8" /></td>
+  <td  align="center">Detail</td><td><textarea name="t7"></textarea></td>
 </tr>
  
 <tr><td>&nbsp;</td>
-  <td><input type="submit" value="Register" name="sbmt" style="border:0px; background:linear-gradient(#FFDD00,#FBB034
+  <td><input type="submit" value="Submit" name="sbmt" style="border:0px; background:linear-gradient(#FFDD00,#FBB034
         ); width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; "></td></tr>
 </table>
 
 </form>  
 </div>
       
-      
-<?php
+      <?php
+
+if($_SESSION['donorstatus']=="")
+{
+  header("location:../login.php");
+  
+}
+
+
 if(isset($_POST["sbmt"])) 
 {
-$target_dir = "doner_pic/";
-$target_file = $target_dir . basename($_FILES["t8"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-
-    $check = getimagesize($_FILES["t8"]["tmp_name"]);
-    if($check !== false) {
-      //  echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } 
-    else 
-    {
-      echo "<script>M.toast({html: 'File is not a image',classes: 'rounded',classes: 'toasts'})</script>";
-        $uploadOk = 0;
-    }
-
-
-
-  if($imageFileType != "jpg" && $imageFileType !="png" && $imageFileType !="jpeg" && $imageFileType !="gif" && $imageFileType !="PNG" && $uploadOk==1)
-  {
+      
     
-    echo "<script>M.toast({html: 'Sorry, only jpg, jpeg, Png & gif files are allowed.',classes: 'rounded',classes: 'toasts'})</script>";
-    $uploadOk=0;
-  
-  }
-  else
-  {
-    if($uploadOk==1)
-    {
-      $cn=makeconnection();     
-
-      $s="select *from donarregistration where email='" . $_POST["t5"] . "'";
+  $cn=makeconnection();
+    $d=$_POST["year"]."/".$_POST["month"]."/".$_POST["day"];
+      $s="insert into requestes(name,gender,age,mobile,bgroup,email,reqdate,detail) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."')";
+      
       
   $q=mysqli_query($cn,$s);
-  $r=mysqli_num_rows($q);
   mysqli_close($cn);
-  if($r<=0)
+  if($q>0)
   {
-    $uploadOk=1;
-    }
-    else{
-      $uploadOk=0;
-      echo "<script>M.toast({html: 'Account with this email already exists.',classes: 'rounded',classes: 'toasts'})</script>";
-
-    }
-
-    if(move_uploaded_file($_FILES["t8"]["tmp_name"], $target_file) && $uploadOk==1)
-    {
-    $cn=makeconnection();
-      $s="insert into donarregistration(name,gender,age,mobile,b_id,email,pwd,pic) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $_POST["t6"] .  "','" . basename($_FILES["t8"]["name"])  ."')";
-      
-      //$s="INSERT INTO donarregistration(name,gender,age,mobile,b_id,email,pswd,pic) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])"
-  mysqli_query($cn,$s);
-  mysqli_close($cn);
-  if($s>0)
-  {
-  echo "<script>M.toast({html: 'Record Saved',classes: 'rounded',classes: 'toasts'})</script>";
+  echo "<script>alert('Record Save');</script>";
   }
   else
-  {
-    echo "<script>M.toast({html: 'Record Saved',classes: 'rounded',classes: 'toasts'})</script>";
+  {echo "<script>alert('Saving Record Failed');</script>";
   }
+    
     } 
-   
   
-  }
-}
-}
-?> 
 
+?> 
 
 <footer class="page-footer purple">
           <div class="container">
@@ -271,6 +271,6 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
           </div>
         </footer>
 
-
+  
 </body>
 </html>

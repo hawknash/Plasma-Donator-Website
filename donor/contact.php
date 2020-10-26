@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION)) {session_start();}  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +44,14 @@
 </form>
 
 <?php
+
+if($_SESSION['donorstatus']=="")
+{
+  header("location:../login.php");
+  
+}
+
+
 if(isset($_POST["sbmt"])) 
 {
   

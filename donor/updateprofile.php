@@ -19,10 +19,23 @@ h2 {
   font-size: 40px !important;
   font-weight: bold !important;
 }
+
+
+.bg-image {
+background-image: url("updatebg.jpg");
+background-color: #cccccc;
+height: 500px;
+background-position: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
 </style>
 
 </head>
-<body>
+<body class="bg-image">
 
 <?php include('header.php'); ?>
 
@@ -51,18 +64,14 @@ if($_SESSION['donorstatus']=="")
   $pic=$data[8];
   //echo $name;
   mysqli_close($cn);
-  
-    
-    
-  
-  
+ 
 
 ?> 
-<div style="text-align: center">
+<div style="text-align: center;">
 <h2>Welcome <?php echo @$name;  ?></h2>
-</div>
 
-<section class="text-gray-700 body-font">
+
+<section class="text-gray-500 body-font">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <img class="object-cover object-center rounded" alt="hero" src="../doner_pic/<?php echo @$pic; ?>">
@@ -72,7 +81,7 @@ if($_SESSION['donorstatus']=="")
       <form class="w-full max-w-sm" method="post">
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+      <label class="block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         Full Name
       </label>
     </div>
@@ -82,7 +91,7 @@ if($_SESSION['donorstatus']=="")
   </div>
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+      <label class="block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
         Age
       </label>
     </div>
@@ -92,7 +101,7 @@ if($_SESSION['donorstatus']=="")
   </div>
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+      <label class="block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         Mobile No
       </label>
     </div>
@@ -104,7 +113,7 @@ if($_SESSION['donorstatus']=="")
   
 
  <div class="md:flex md:items-center mb-6">
-    <div class="md:w-1/3"><label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+    <div class="md:w-1/3"><label class="block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         Gender
       </label></div>
     <label class="inline-flex items-center">
@@ -135,10 +144,18 @@ if($_SESSION['donorstatus']=="")
     </div>
   </div>
 </section>
-
+</div>
 
 <?php
   
+  if($_SESSION['donorstatus']=="")
+  {
+    header("location:../login.php");
+    
+  }
+
+
+
   if(isset($_POST["sbmt"])) 
   {
     $cn=makeconnection();
