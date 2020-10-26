@@ -61,7 +61,7 @@ if($_SESSION['donorstatus']=="")
   $gender=$data[2];
   $age=$data[3];
   $mobile=$data[4];
-  $pic=$data[8];
+  $pic=$data[9];
   //echo $name;
   mysqli_close($cn);
  

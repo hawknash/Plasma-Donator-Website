@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `donarregistration` (
   `gender` varchar(100) NOT NULL,
   `age` varchar(100) NOT NULL,
   `mobile` varchar(100) NOT NULL,
- 
+  `city` varchar(30) NOT NULL,
   `b_id` int(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `pwd` int(100) NOT NULL,

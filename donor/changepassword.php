@@ -29,7 +29,7 @@ h2 {
 
 
 .bg-image {
-background-image: url("passbg.jpg");
+background-image: url("changebg.jpeg");
 background-color: #cccccc;
 height: 500px;
 background-position: center;
@@ -66,7 +66,7 @@ if($_SESSION['donorstatus']=="")
   $gender=$data[2];
   $age=$data[3];
   $mobile=$data[4];
-  $pic=$data[8];
+  $pic=$data[9];
   //echo $name;
   mysqli_close($cn);
 ?>
@@ -76,7 +76,7 @@ if($_SESSION['donorstatus']=="")
 
 
 
-<section class="text-gray-700 body-font">
+<section class="text-gray-700 body-font" style="padding-top: 60px;">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <img class="object-cover object-center rounded" alt="hero" src="../doner_pic/<?php echo @$pic; ?>">
@@ -86,7 +86,7 @@ if($_SESSION['donorstatus']=="")
       <form class="w-full max-w-sm" method="post">
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
-      <label class="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         Current Password
       </label>
     </div>
@@ -97,7 +97,7 @@ if($_SESSION['donorstatus']=="")
 
    <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
-      <label class="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         New Password
       </label>
     </div>
@@ -108,7 +108,7 @@ if($_SESSION['donorstatus']=="")
 
    <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
-      <label class="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
         Confirm Password
       </label>
     </div>

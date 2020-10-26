@@ -42,8 +42,8 @@ background-size: cover;
 }
 
 .mycard{
-  border:4px solid yellow;
-  background-color:white;
+  border:5px solid #277AAC;
+  background-color:#98DCF3;
   border-radius: 100px;
   width:50%;
 
@@ -62,10 +62,11 @@ background-size: cover;
 
 .newcard{
   width:80%;
+  background-color: #CEEDFF;
   margin:auto;
   border-radius: 100px;
-  box-shadow:4px 1px 20px #999900 !important;
-  border:2px solid yellow;
+  box-shadow:4px 1px 20px #277AAC !important;
+  border:4px solid #277AAC;
   margin-top: 30px;
   margin-bottom: 20px;
 }
@@ -82,32 +83,58 @@ background-size: cover;
 
 
   <div class="mycard">
-    <h2>Results</h2>
+    <h2>Registered Donors.</h2>
      <?php
-$cn=makeconnection();
-$s="select * from donarregistration,bloodgroup where donarregistration.b_id='". $_REQUEST["bg"]."' and donarregistration.b_id=bloodgroup.bg_id";
-  $result=mysqli_query($cn,$s);
-  $r=mysqli_num_rows($result);
-  //echo $r;
-  $n=0;
-  while($data=mysqli_fetch_array($result))
-  {
-?>
-    <div class="newcard">
-      <div style="display: inline-block;">
-      <img src="doner_pic/<?php echo $data[8] ?>" style="width:200px;height: 150px;padding-right: 20px">
-      </div>
-      <div style="display: inline-block;">
-      <p><b>Name:</b> <?php echo $data[1]; ?></p>
-        <p><b>Gender:</b> <?php echo $data[2]; ?>
-        </p>
-        <p><b>Email:</b> <?php echo $data[6]; ?></p>
-        <p><b>Mobile No:</b> <?php echo $data[4]; ?></p>
-        <p><b>Blood Group:</b> <?php echo $data[10]; ?></p>
 
-      </div>
+$cn=makeconnection();
+
+    if($_REQUEST["bg"]!="" and $_REQUEST["city"]==""){
+
+
+$s="select * from donarregistration,bloodgroup where donarregistration.b_id='". $_REQUEST["bg"]."' and donarregistration.b_id=bloodgroup.bg_id";
+
+
+    }
+    else if($_REQUEST["bg"]=="" and $_REQUEST["city"]!=""){
+      $s="select * from donarregistration,bloodgroup where donarregistration.city='". $_REQUEST["city"]."' and donarregistration.b_id=bloodgroup.bg_id";
+
+    }
+    else{
+      $s="select * from donarregistration,bloodgroup where donarregistration.city='". $_REQUEST["city"]."' and donarregistration.b_id='". $_REQUEST["bg"]."' and '". $_REQUEST["bg"]."'=bloodgroup.bg_id";
+
+    }
+
+
+    $result=mysqli_query($cn,$s);
+$r=mysqli_num_rows($result);
+if ($r==0){
+  echo "<p><b>No Donor Found</b></p>";
+  echo "<script>M.toast({html: 'Sorry no donor found.',classes: 'rounded',classes: 'toasts'})</script>";
+}
+$n=0;
+while($data=mysqli_fetch_array($result))
+{
+
+ 
+?>
+  <div class="newcard">
+    <div style="display: inline-block;">
+    <img src="doner_pic/<?php echo $data[9] ?>" style="width:200px;height: 150px;padding-right: 20px">
+    </div>
+    <div style="display: inline-block;">
+    <p><b>Name:</b> <?php echo $data[1]; ?></p>
+      <p><b>Gender:</b> <?php echo $data[2]; ?>
+      </p>
+      <p><b>Email:</b> <?php echo $data[7]; ?></p>
+      <p><b>Mobile No:</b> <?php echo $data[4]; ?></p>
+      <p><b>City:</b> <?php echo $data[5]; ?></p>
+      <p><b>Blood Group:</b> <?php echo $data[11]; ?></p>
 
     </div>
+
+  </div>
+
+ 
     <?php }
    ?>
   </div>

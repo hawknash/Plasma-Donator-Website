@@ -31,17 +31,24 @@ h2 {
 }
 
 .mycard{
-  border:2px solid yellow;
+  border:5px solid #277AAC;
   border-radius: 100px;
   padding:20px;
   width:40%;
   margin:auto;
   margin-top: 2%;
   box-shadow:4px 1px 20px black !important;
-  background-color: white;
+  background-color: #CEEDFF;
   
 
 
+}
+input{
+  background-color: #CEEDFF;
+}
+
+select{
+  background-color: #CEEDFF;
 }
 
 .bg-image {
@@ -71,13 +78,13 @@ background-size: cover;
 
 
   <div class="mycard">
-    <h4>People With Same Blood Group</h4>
+    <h2>Search Donors!</h2>
     <div style="padding: 40px">
 
      <form method="post" enctype="multipart/form-data">
      
 
-  <p style="display: inline-block;padding-right:  40px">Blood Group:    </p> <select style="display: inline-block;width: 100px" name="s2" required><option value="">Select</option>
+  <p style="display: inline-block;padding-right:  40px;font-size:20">Blood Group:    </p> <select style="width: 100px" name="s2" ><option value="">Select</option>
 
 <?php
 $cn=makeconnection();
@@ -107,6 +114,8 @@ $s="select * from bloodgroup";
 
 </select>
 
+
+
 <?php
 if(isset($_POST["show"]))
 {
@@ -124,9 +133,13 @@ $s="select * from bloodgroup where bg_id='" .$_POST["s2"] ."'";
   mysqli_close($cn);
 }
 ?>
+<br>
+<div style="display: inline-block;padding-left:  40px;font-size:20">City:</div><div style="display: inline-block;padding-left:  60px"> <input type="text" style="width: 100px;" name="city"></div>
 </div>
 
-<input type="submit" value="Search" name="sbmt" style="border:0px; background:linear-gradient(#FFDD00,#FBB034); width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; ">
+
+
+<input type="submit" value="Search" name="sbmt" style="border:0px; background:#277AAC; width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; ">
 
                         
            
@@ -147,7 +160,15 @@ $s="select * from bloodgroup where bg_id='" .$_POST["s2"] ."'";
 if(isset($_POST["sbmt"]))
 {
   //header("location:result.php?bg=".$_POST["s2"]);
-  echo "<script>location.replace('result.php?bg=". $_POST["s2"] ."');</script>";
+  if($_POST["s2"]!="" or $_POST["city"]!=""){
+    echo "<script>location.replace('result.php?bg=". $_POST["s2"] ."&city=". $_POST["city"] ."');</script>";
+
+
+  }
+  else{
+    echo "<script>M.toast({html: 'Select atleast one value.',classes: 'rounded',classes: 'toasts'})</script>";
+  }
+ // echo "<script>location.replace('result.php?bg=". $_POST["s2"] ."');</script>";
 }
 
 ?>

@@ -39,7 +39,7 @@ input[type="radio"]{
 }
 
 .mycard{
-  border:2px solid yellow;
+  border:5px solid #2D7586;
   border-radius: 100px;
   padding:20px;
   width:50%;
@@ -47,7 +47,7 @@ input[type="radio"]{
   margin-top: 2%;
   margin-bottom: 2%;
   box-shadow:4px 1px 20px black !important;
-  background-color: white;
+  background-color: #D0EBED;
   text-align: center;
 
 
@@ -58,6 +58,7 @@ input[type="radio"]{
 }
 select{
   display: inline !important;
+  background-color: #D0EBED;
 }
 
 .bg-image {
@@ -94,7 +95,7 @@ background-attachment: fixed;
                    
 
 <tr>
-  <td  align="center">Donor Name:</td>
+  <td  align="center">Donor Name</td>
   <td><input type="text" name="t1" required="required" pattern="[a-zA-Z _]{5,15}" title="please enter only character  between 5 to 15 for donor name" /></td>
 </tr>
  <tr><td class="lefttd">Gender</td><td><input name="r1" type="radio" value="male" checked="checked">Male  <input name="r1" type="radio" value="female" >Female</td></tr>
@@ -107,6 +108,10 @@ background-attachment: fixed;
  
 <tr>
   <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,12}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
+</tr>
+
+<tr>
+  <td  align="center">City</td><td><input type="text" name="city"  required="required" title="Please enter city" /></td>
 </tr>
  
 <tr>
@@ -159,8 +164,7 @@ $s="select * from bloodgroup";
 </tr>
  
 <tr><td>&nbsp;</td>
-  <td><input type="submit" value="Register" name="sbmt" style="border:0px; background:linear-gradient(#FFDD00,#FBB034
-        ); width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; "></td></tr>
+  <td><input type="submit" value="Register" name="sbmt" style="border:0px; background:#2D7586; width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; "></td></tr>
 </table>
 
 </form>  
@@ -220,7 +224,7 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     if(move_uploaded_file($_FILES["t8"]["tmp_name"], $target_file) && $uploadOk==1)
     {
     $cn=makeconnection();
-      $s="insert into donarregistration(name,gender,age,mobile,b_id,email,pwd,pic) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $_POST["t6"] .  "','" . basename($_FILES["t8"]["name"])  ."')";
+      $s="insert into donarregistration(name,gender,age,mobile,city,b_id,email,pwd,pic) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["city"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $_POST["t6"] .  "','" . basename($_FILES["t8"]["name"])  ."')";
       
       //$s="INSERT INTO donarregistration(name,gender,age,mobile,b_id,email,pswd,pic) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])"
   mysqli_query($cn,$s);

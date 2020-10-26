@@ -34,14 +34,14 @@ h2 {
 }
 
 .mycard{
-  border:2px solid yellow;
+  border:5px solid #2D7586;
   border-radius: 100px;
   padding:20px;
   width:40%;
   margin:auto;
   margin-top: 2%;
   box-shadow:4px 1px 20px black !important;
-  background-color: white;
+  background-color:#D0EBED;
   text-align: center;
 
 
@@ -92,8 +92,8 @@ background-size: cover;
         </div>
       </div>
       
-        <input type="submit" value="Log In" name="sbmt" style="border:0px; background:linear-gradient(#FFDD00,#FBB034
-        ); width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; ">
+        <input type="submit" value="Log In" name="sbmt" style="border:0px; background:#2D7586
+        ; width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; ">
     
 
       
@@ -125,7 +125,7 @@ if(isset($_POST["sbmt"]))
     $_SESSION["email"]=$_POST["t1"];
        $_SESSION['donorstatus']="yes";
 //header("location:donor/index.php");
-echo  "<script>location.replace('donor/updateprofile.php');</script>";
+echo  "<script>location.replace('donor/index.php');</script>";
   }
   else
   {
