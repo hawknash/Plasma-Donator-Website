@@ -104,15 +104,15 @@ background-attachment: fixed;
  
 <tr>
   <td  align="center">Age</td>
-  <td><input type="text" name="t2" required="required" pattern="[0-9]{2,2}" title="please enter only  numbers between 2 to 2 for age" /></td>
+  <td><input type="number" name="t2" required="required" pattern="[0-9]{2,2}" title="please enter only  numbers between 2 to 2 for age" /></td>
 </tr>
  
 <tr>
-  <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,12}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
+  <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,10}" title="please enter only numbers between for mobile no." /></td>
 </tr>
 
 <tr>
-  <td  align="center">City</td><td><input type="text" name="city"  required="required" title="Please enter city" /></td>
+  <td  align="center">City</td><td><input type="text" name="city"  required="required" oninput="this.value=this.value.toLowerCase()" title="Please enter city" /></td>
 </tr>
  
 <tr>
@@ -153,11 +153,11 @@ $s="select * from bloodgroup";
  
 <tr>
   <td >Password</td>
-  <td><input type="password" name="t6" required="required" pattern="[a-zA-Z0-9]{2,10}" title="please enter only character or numbers between 2 to 10 for password" /></td>
+  <td><input type="password" name="t6" required="required" pattern="[a-zA-Z0-9]{5,10}" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" /></td>
 </tr>
 <tr>
   <td >Confirm Password</td>
-  <td><input type="password" name="t7" required="required" pattern="[a-zA-Z0-9 ]{2,10}" title="please enter only character or numbers between 2 to 10 for password" /></td>
+  <td><input type="password" name="t7" required="required" pattern="[a-zA-Z0-9]{5,10}" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" /></td>
 </tr>
 
 <tr>

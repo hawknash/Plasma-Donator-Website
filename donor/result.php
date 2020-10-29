@@ -94,16 +94,16 @@ $cn=makeconnection();
     if($_REQUEST["bg"]!="" and $_REQUEST["city"]==""){
 
 
-$s="select * from requestes,bloodgroup where requestes.bgroup='". $_REQUEST["bg"]."' and requestes.bgroup=bloodgroup.bg_id";
+$s="select * from requests,bloodgroup where requests.bgroup='". $_REQUEST["bg"]."' and requests.bgroup=bloodgroup.bg_id";
 
 
     }
     else if($_REQUEST["bg"]=="" and $_REQUEST["city"]!=""){
-      $s="select * from requestes,bloodgroup where requestes.city='". $_REQUEST["city"]."' and requestes.bgroup=bloodgroup.bg_id";
+      $s="select * from requests,bloodgroup where requests.city='". $_REQUEST["city"]."' and requests.bgroup=bloodgroup.bg_id";
 
     }
     else{
-      $s="select * from requestes,bloodgroup where requestes.city='". $_REQUEST["city"]."' and requestes.bgroup='". $_REQUEST["bg"]."' and '". $_REQUEST["bg"]."'=bloodgroup.bg_id";
+      $s="select * from requests,bloodgroup where requests.city='". $_REQUEST["city"]."' and requests.bgroup='". $_REQUEST["bg"]."' and '". $_REQUEST["bg"]."'=bloodgroup.bg_id";
 
     }
 

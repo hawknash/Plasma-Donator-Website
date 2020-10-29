@@ -230,7 +230,7 @@ if(isset($_POST["sbmt"]))
     
   $cn=makeconnection();
     $d=$_POST["year"]."/".$_POST["month"]."/".$_POST["day"];
-      $s="insert into requestes(name,gender,age,mobile,bgroup,email,reqdate,detail,city) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."','" .  $_POST["city"]  ."')";
+      $s="insert into requests(name,gender,age,mobile,bgroup,email,reqdate,detail,city) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."','" .  $_POST["city"]  ."')";
       
       
   $q=mysqli_query($cn,$s);
@@ -256,7 +256,7 @@ if(isset($_POST["sbmt"]))
       $message="
       <html>
       <body>
-      <p> Plasma Request for:
+      <h2> Plasma Request for: </h2>
         <p><b>Name:</b> $name</p>
         <p><b>Gender:</b> $gender
         </p>
@@ -285,7 +285,7 @@ $headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
   echo "<script>M.toast({html: 'Record Sent',classes: 'rounded',classes: 'toasts'})</script>";
 }
   else
-  {echo "<script>alert('Error sending request');</script>";
+  { echo "<script>M.toast({html: 'Error',classes: 'rounded',classes: 'toasts'})</script>";
   }
     
     } 

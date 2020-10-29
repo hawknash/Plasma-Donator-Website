@@ -76,7 +76,7 @@ if($_SESSION['donorstatus']=="")
 
 
 $cn=mysqli_connect("localhost","root","","plasma");
-$s="select * from requestes";
+$s="select * from requests";
   $result=mysqli_query($cn,$s);
   $r=mysqli_num_rows($result);
   //echo $r;

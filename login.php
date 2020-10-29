@@ -88,7 +88,7 @@ background-size: cover;
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" name="t2" class="validate" required>
+          <input id="password" type="password" name="t2" class="validate" pattern="[a-zA-Z0-9]{5,10}" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" onchange="setCustomValidity('')" required>
           <label for="password">Password</label>
         </div>
       </div>

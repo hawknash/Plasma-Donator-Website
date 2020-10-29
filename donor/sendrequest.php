@@ -110,6 +110,13 @@ background-size: cover;
 <tr>
   <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,12}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
 </tr>
+
+<tr>
+  <td  align="center">City</td><td>
+    <input type="text" oninput="this.value=this.value.toLowerCase()" name="city" required="required" /></td>
+  </tr>
+ 
+<tr>
  
 <tr>
   <td  align="center">Select Blood Group </td><td><select name="t4" required>
@@ -227,7 +234,7 @@ if(isset($_POST["sbmt"]))
     
   $cn=makeconnection();
     $d=$_POST["year"]."/".$_POST["month"]."/".$_POST["day"];
-      $s="insert into requestes(name,gender,age,mobile,bgroup,email,reqdate,detail) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."')";
+    $s="insert into requests(name,gender,age,mobile,bgroup,email,reqdate,detail,city) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."','" .  $_POST["city"]  ."')";
       
       
   $q=mysqli_query($cn,$s);
@@ -252,7 +259,7 @@ if(isset($_POST["sbmt"]))
       $message="
       <html>
       <body>
-      <p> Plasma Request for:
+      <h2> Plasma Request for:</h2>
         <p><b>Name:</b> $name</p>
         <p><b>Gender:</b> $gender
         </p>
@@ -278,10 +285,11 @@ $headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
     mysqli_close($cn);
       }
 
-  echo "<script>alert('Record Save');</script>";
+      echo "<script>M.toast({html: 'Record Sent',classes: 'rounded',classes: 'toasts'})</script>";
   }
   else
-  {echo "<script>alert('Saving Record Failed');</script>";
+  {
+    echo "<script>M.toast({html: 'Error',classes: 'rounded',classes: 'toasts'})</script>";
   }
     
     } 
