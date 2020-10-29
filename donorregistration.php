@@ -2,6 +2,7 @@
 <head>
  <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Plasma Donator</title>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -224,7 +225,9 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     if(move_uploaded_file($_FILES["t8"]["tmp_name"], $target_file) && $uploadOk==1)
     {
     $cn=makeconnection();
-      $s="insert into donarregistration(name,gender,age,mobile,city,b_id,email,pwd,pic) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["city"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $_POST["t6"] .  "','" . basename($_FILES["t8"]["name"])  ."')";
+    $hashed=md5($_POST["t6"]);
+    echo "$hashed";
+      $s="insert into donarregistration(name,gender,age,mobile,city,b_id,email,pwd,pic) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["city"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','$hashed','" . basename($_FILES["t8"]["name"])  ."')";
       
       //$s="INSERT INTO donarregistration(name,gender,age,mobile,b_id,email,pswd,pic) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])"
   mysqli_query($cn,$s);

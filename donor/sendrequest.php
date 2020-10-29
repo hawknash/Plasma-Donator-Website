@@ -3,6 +3,7 @@
 <head>
  <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Plasma Donator</title>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -230,9 +231,53 @@ if(isset($_POST["sbmt"]))
       
       
   $q=mysqli_query($cn,$s);
-  mysqli_close($cn);
+ 
   if($q>0)
   {
+    $s="select * from donarregistration,bloodgroup where donarregistration.city='". $_POST["city"]."' and donarregistration.b_id='". $_POST["t4"]."' and '". $_POST["t4"]."'=bloodgroup.bg_id";
+    
+    $result=mysqli_query($cn,$s);
+    $r=mysqli_num_rows($result);
+
+    while($data=mysqli_fetch_array($result))
+    {
+      $name=$_POST["t1"];
+      $gender=$_POST["r1"];
+      $email=$_POST["t5"];
+      $mobile=$_POST["t3"];
+      $city=$_POST["city"];
+      $bg=$data[11];
+      $detail=$_POST["t7"];
+
+      $message="
+      <html>
+      <body>
+      <p> Plasma Request for:
+        <p><b>Name:</b> $name</p>
+        <p><b>Gender:</b> $gender
+        </p>
+        <p><b>Email:</b> $email</p>
+        <p><b>Mobile No:</b> $mobile</p>
+        <p><b>City:</b> $city</p>
+        <p><b>Blood Group:</b> $bg</p>
+        <p><b>Detail: </b>$detail</p>
+
+  
+      </body>
+      </html>
+      ";
+
+      $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
+
+  mail($data[7],'Requests For Plasma',$message,$headers);
+
+    mysqli_close($cn);
+      }
+
   echo "<script>alert('Record Save');</script>";
   }
   else

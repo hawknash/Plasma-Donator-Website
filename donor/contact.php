@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+<title>Plasma Donator</title>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
 
@@ -64,7 +64,27 @@ if(isset($_POST["sbmt"]))
   mysqli_close($cn);
   if($q>0)
   {
-  echo "<script>alert('Record Save');</script>";
+    $sub=$_POST["t4"];
+
+      $message="
+      <html>
+      <body>
+      <p>Thank you for contacting plasma donator.
+      <p>Your subject: $sub
+
+      </body>
+      </html>
+      ";
+
+    echo "<script> M.toast({html: 'Record saved.',classes: 'rounded',classes: 'toasts'})</script>";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
+
+  mail( $_POST["t2"],'Contacting Plasma Donator',$message,$headers);
+    
   }
   else
   {echo "<script>alert('Saving Record Failed');</script>";

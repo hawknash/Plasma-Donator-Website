@@ -1,12 +1,15 @@
 <html>
 <head>
  <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
     <title>Plasma Donator</title>
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    
+    
     <style>
       a {
   color: black !important;
@@ -37,6 +40,7 @@ h2 {
   padding:20px;
   width:40%;
   margin:auto;
+  text-align: center;
   margin-top: 2%;
   box-shadow:4px 1px 20px black !important;
   background-color: #CEEDFF;
@@ -49,11 +53,12 @@ input{
 }
 
 select{
-  background-color: #CEEDFF;
+  background-color: #CEEDFF !important;
+  
 }
 
 .bg-image {
-background-image: url("searchbg.jpg");
+background-image: url("../searchbg.jpg");
 background-color: #cccccc;
 height: 500px;
 background-position: center;
@@ -72,21 +77,23 @@ background-size: cover;
 </head>
 
 <body class="bg-image">
-  <?php include('admin/function.php'); ?>
+  <?php include('function.php'); ?>
  <?php include('header.php'); ?>
 
 
 
 
   <div class="mycard">
-    <h2>Search Donors!</h2>
+  
+    <h2>Search Requests!</h2>
     <div style="padding: 40px">
 
      <form method="post" enctype="multipart/form-data">
      
-
-  <p style="display: inline-block;padding-right:  40px;font-size:20">Blood Group:    </p> <select style="width: 100px" name="s2" ><option value="">Select</option>
-
+<div>
+  <div style="display: inline-block;padding-right:40px;padding-left:150px;font-size:20;float:left;text-align:center">Blood Group:    </div><div > <select class="browser-default" style="width: 100px;" name="s2" ><option value="">Select</option>
+</div>
+</div>
 <?php
 $cn=makeconnection();
 $s="select * from bloodgroup";
@@ -135,9 +142,12 @@ $s="select * from bloodgroup where bg_id='" .$_POST["s2"] ."'";
 }
 ?>
 <br>
-<div style="display: inline-block;padding-left:  40px;font-size:20">City:</div><div style="display: inline-block;padding-left:  60px"> <input type="text" style="width: 100px;" name="city"></div>
+<div style="display: inline-block;padding-right:  40px;padding-left:220px;float:left;font-size:20">City: </div><div style="float:left"> <input type="text" style="width: 100px;" name="city"></div>
+<br>
 </div>
-
+<br>
+<br>
+<br>
 
 
 <input type="submit" value="Search" name="sbmt" style="border:0px; background:#277AAC; width:100px; height:30px; border-radius:10px 1px 10px 1px; box-shadow:1px 1px 5px black; color:white; font-weight:bold; font-size:14px; text-shadow:1px 1px 6px black; ">

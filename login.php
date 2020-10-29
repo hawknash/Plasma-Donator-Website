@@ -3,6 +3,7 @@
 <head>
  <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Plasma Donator</title>
 
    
 
@@ -81,13 +82,13 @@ background-size: cover;
       
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" name="t1" class="validate">
+          <input id="email" type="email" name="t1" class="validate" required>
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" name="t2" class="validate">
+          <input id="password" type="password" name="t2" class="validate" required>
           <label for="password">Password</label>
         </div>
       </div>
@@ -114,8 +115,9 @@ if(isset($_POST["sbmt"]))
 {
   
   $cn=makeconnection();     
+  $hashed=md5($_POST["t2"]);
 
-      $s="select *from donarregistration where email='" . $_POST["t1"] . "' and pwd='" .$_POST["t2"] . "'";
+      $s="select *from donarregistration where email='" . $_POST["t1"] . "' and pwd='$hashed'";
       
   $q=mysqli_query($cn,$s);
   $r=mysqli_num_rows($q);

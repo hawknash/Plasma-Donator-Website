@@ -3,7 +3,7 @@
 <head>
  <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <title>Plasma Donator</title>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -61,7 +61,7 @@ background-size: cover;
 <table class="striped" style="text-align:center">
 
 <img src="../request.PNG" style="text-align: center;padding-left: 35%" >
-<tr><td  >S. No.</td><td  >Name</td><td  >Gender</td><td  >Age</td><td  >Mobile</td><td  >Email</td><td  >Blood Group</td></tr>
+<tr><td  >Name</td><td  >Gender</td><td  >Age</td><td  >Mobile</td><td  >Email</td><td  >Blood Group</td><td  >City</td></tr>
 
 <?php
 
@@ -87,7 +87,7 @@ $s="select * from requestes";
     $rr=mysqli_query($cn,$ss);
     $rrr=mysqli_fetch_array($rr);
     
-        echo"<tr><td  >$data[0]</td><td  >$data[1]</td><td  >$data[2]</td><td  >$data[3]</td><td  >$data[4]</td><td  >$data[5]</td><td  >$rrr[0]</td></tr>";
+        echo"<tr><td  >$data[1]</td><td  >$data[2]</td><td  >$data[3]</td><td  >$data[4]</td><td  >$data[5]</td><td  >$rrr[0]</td><td  >$data[9]</td></tr>";
       }
       mysqli_close($cn);
 ?>

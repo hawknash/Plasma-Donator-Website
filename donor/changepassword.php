@@ -2,12 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+<title>Plasma Donator</title>
+<script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="stylesheet.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+ 
 
 
   <style>
@@ -23,8 +28,8 @@ h2 {
 }
 
 .toasts{
-  background:linear-gradient(#FFDD00,#FBB034);
-  color: black
+  background:linear-gradient(#FFDD00,#FBB034) !important;
+  color: black !important;
 }
 
 
@@ -52,7 +57,7 @@ background-size: cover;
 if($_SESSION['donorstatus']=="")
 {
 	//header("location:../login.php");
-  echo "<script>location.replace('login.php');</script>";
+  echo "<script>location.replace('../login.php');</script>";
     }
 
     $cn=mysqli_connect("localhost","root","","plasma");
@@ -91,7 +96,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t2">
+      <input required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t2">
     </div>
   </div>
 
@@ -102,7 +107,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" style="text-color:white !important;" id="inline-full-name" type="password"  name="t3">
+      <input required class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" style="text-color:white !important;" id="inline-full-name" type="password"  name="t3">
     </div>
   </div>
 
@@ -113,7 +118,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t4">
+      <input required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t4">
     </div>
   </div>
   
@@ -158,20 +163,24 @@ if($_SESSION['donorstatus']=="")
 if(isset($_POST["sbmt"])) 
 {
 	
-	$cn=makeconnection();			
+  $cn=makeconnection();			
+  $hashed=md5($_POST["t2"]);
 
-			$s="select *from donarregistration where email='" .$_SESSION["email"] . "' and  pwd='" .$_POST["t2"] . "'";
+			$s="select *from donarregistration where email='" .$_SESSION["email"] . "' and  pwd='$hashed'";
 			
 	$q=mysqli_query($cn,$s);
-	$r=mysqli_num_rows($q);
+  $r=mysqli_num_rows($q);
+  echo "$r";
 	
-	if($r>0)
+	if($r>0 && $_POST["t3"]==$_POST["t4"] )
 	{
+    $newhashed=md5($_POST["t3"]);
 	
-	$s1="update donarregistration set pwd='" . $_POST["t3"]  ."' where email='" .$_SESSION["email"] ."'";
+	$s1="update donarregistration set pwd='$newhashed' where email='" .$_SESSION["email"] ."'";
 	mysqli_query($cn,$s1);
 	mysqli_close($cn);
-	echo  "<script>M.toast({html: 'Password Updated.',classes: 'rounded',classes: 'toasts'})</script>";
+  echo  "<script>M.toast({html: 'Password Updated.',classes: 'rounded',classes: 'toasts'})</script>";
+  
 
 	}
 	else

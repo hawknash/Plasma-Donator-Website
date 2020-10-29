@@ -1,11 +1,17 @@
 <html>
 <head>
  <!-- Compiled and minified CSS -->
+   
+    <title>Plasma Donator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
      <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+
+    <!-- Compiled and minified JavaScript -->
+  
      <style>
       a {
   color: black !important;
@@ -108,6 +114,13 @@ background-size: cover;
 <tr>
   <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,12}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
 </tr>
+
+<tr>
+  <td  align="center">City</td><td>
+    <input type="text" oninput="this.value=this.value.toLowerCase()" name="city" required="required" /></td>
+  </tr>
+ 
+<tr>
  
 <tr>
   <td  align="center">Select Blood Group </td><td><select name="t4" required>
@@ -217,17 +230,62 @@ if(isset($_POST["sbmt"]))
     
   $cn=makeconnection();
     $d=$_POST["year"]."/".$_POST["month"]."/".$_POST["day"];
-      $s="insert into requestes(name,gender,age,mobile,bgroup,email,reqdate,detail) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."')";
+      $s="insert into requestes(name,gender,age,mobile,bgroup,email,reqdate,detail,city) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','" . $d .  "','" .  $_POST["t7"]  ."','" .  $_POST["city"]  ."')";
       
       
   $q=mysqli_query($cn,$s);
-  mysqli_close($cn);
+ 
   if($q>0)
   {
-  echo "<script>alert('Record Save');</script>";
+
+    $s="select * from donarregistration,bloodgroup where donarregistration.city='". $_POST["city"]."' and donarregistration.b_id='". $_POST["t4"]."' and '". $_POST["t4"]."'=bloodgroup.bg_id";
+    
+    $result=mysqli_query($cn,$s);
+    $r=mysqli_num_rows($result);
+
+    while($data=mysqli_fetch_array($result))
+    {
+      $name=$_POST["t1"];
+      $gender=$_POST["r1"];
+      $email=$_POST["t5"];
+      $mobile=$_POST["t3"];
+      $city=$_POST["city"];
+      $bg=$data[11];
+      $detail=$_POST["t7"];
+
+      $message="
+      <html>
+      <body>
+      <p> Plasma Request for:
+        <p><b>Name:</b> $name</p>
+        <p><b>Gender:</b> $gender
+        </p>
+        <p><b>Email:</b> $email</p>
+        <p><b>Mobile No:</b> $mobile</p>
+        <p><b>City:</b> $city</p>
+        <p><b>Blood Group:</b> $bg</p>
+        <p><b>Detail: </b>$detail</p>
+
+  
+      </body>
+      </html>
+      ";
+
+      $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
+
+  mail($data[7],'Requests For Plasma',$message,$headers);
+
+    mysqli_close($cn);
+   
   }
+  echo "<script>M.toast({html: 'Record Sent',classes: 'rounded',classes: 'toasts'})</script>";
+}
   else
-  {echo "<script>alert('Saving Record Failed');</script>";
+  {echo "<script>alert('Error sending request');</script>";
   }
     
     } 

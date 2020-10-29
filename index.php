@@ -59,6 +59,103 @@ width: 200px;
 </style>
 
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current",{packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        async function getData()
+              {
+                var active=[['State','Value']];
+                var confirmed=[['State','Value',{ role: 'style' }]];
+                var deaths=[['State','Value',{ role: 'style' }]];
+                var recovered=[['State','Value',{ role: 'style' }]];
+                const response=await fetch("https://api.covid19india.org/data.json");
+                const data=await response.json();
+                for (var i=1;i<38;i++)
+                {
+                  //console.log(data.statewise[i].state);
+                  var a=[data.statewise[i].state,parseInt(data.statewise[i].active)];
+                  var c=[data.statewise[i].state,parseInt(data.statewise[i].confirmed),'red'];
+                  var d=[data.statewise[i].state,parseInt(data.statewise[i].deaths),'black'];
+                  var r=[data.statewise[i].state,parseInt(data.statewise[i].recovered),'green'];
+                  //console.log(a);
+                  active.push(a);
+                  confirmed.push(c);
+                  deaths.push(d);
+                  recovered.push(r);
+                }
+                //console.log(active);
+                var active=google.visualization.arrayToDataTable(active);
+                var options = {
+                    title: 'Number of Active Cases - StateWise',
+                    legend: { position: 'none' },
+                     hAxis: {
+                       slantedText: true,
+                       slantedTextAngle: 90,
+                       showTextEvery:1
+                    },                    
+                  };
+                var chart = new google.visualization.ColumnChart(document.getElementById('active_chart'));
+                chart.draw(active,options);
+
+
+                var confirmed=google.visualization.arrayToDataTable(confirmed);
+                var options = {
+                    title: 'Number of Confirmed Cases - StateWise',
+                    legend: { position: 'none' },
+                     hAxis: {
+                       slantedText: true,
+                       slantedTextAngle: 90,
+                       showTextEvery:1
+                    },                    
+                  };
+                var chart = new google.visualization.ColumnChart(document.getElementById('confirmed_chart'));
+                chart.draw(confirmed,options);
+
+                var deaths=google.visualization.arrayToDataTable(deaths);
+                var options = {
+                    title: 'Number of Deaths - StateWise',
+                    legend: { position: 'none' },
+                     hAxis: {
+                       slantedText: true,
+                       slantedTextAngle: 90,
+                       showTextEvery:1
+                    },
+                    //width:1500,
+                    //height:1150
+                  };
+                var chart = new google.visualization.ColumnChart(document.getElementById('deaths_chart'));
+                chart.draw(deaths,options);
+
+
+                var recovered=google.visualization.arrayToDataTable(recovered);
+                var options = {
+                    title: 'Number of Recovered Cases - StateWise',
+                    legend: { position: 'none' },
+                     hAxis: {
+                       slantedText: true,
+                       slantedTextAngle: 90,
+                       showTextEvery:1
+                    },                    
+                  };
+                var chart = new google.visualization.ColumnChart(document.getElementById('recovered_chart'));
+                chart.draw(recovered,options);
+              }
+        getData();
+      }
+
+
+
+     
+
+
+    </script>
+
+
+
+
 
 </head>
 <body>
@@ -198,6 +295,17 @@ The recovered blood will be taken into study and a researcher will extract plasm
     <div class="parallax"><img src="plasmabackground1.jpg" alt="Unsplashed background img 3"></div>
   </div>
 
+  <div style="text-align: center;padding: 40px;background:#FFFDD0">
+
+<div style="">
+<h2>Some Graphs!</h2>
+
+<div id="active_chart" style="width: 800px; height: 600px;display: inline-block"></div>
+    <div id="confirmed_chart" style="width: 800px; height: 600px;display: inline-block"></div>
+    <div id="deaths_chart" style="width: 800px; height: 600px;display: inline-block"></div>
+    <div id="recovered_chart" style="width: 800px; height: 600px;display: inline-block"></div>
+</div>
+</div>
   
 
   <footer class="page-footer purple">

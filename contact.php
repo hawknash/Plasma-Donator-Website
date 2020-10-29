@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+<title>Plasma Donator</title>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+   
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link href="stylesheet.css" rel="stylesheet" type="text/css" />
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+ 
 
 
   <style>
@@ -34,10 +40,10 @@
     <div class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
       <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Contact Us</h2>
       <p class="leading-relaxed mb-5 text-gray-600">Will love to here from you!</p>
-      <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="t1" placeholder="Name" type="Name">
-      <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="t2" placeholder="Email" type="name">
-      <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="t3" placeholder="Mobile" type="name">
-      <textarea class="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none" name="t4"  placeholder="Message"></textarea>
+      <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="t1" placeholder="Name" type="Name" required>
+      <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="t2" placeholder="Email" type="name" required>
+      <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" name="t3" placeholder="Mobile" type="name" required>
+      <textarea class="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none" name="t4"  placeholder="Message" required></textarea>
       <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit" name="sbmt">SUBMIT</button>
       <p class="text-xs text-gray-500 mt-3">Thank You.</p>
     </div>
@@ -59,10 +65,31 @@ if(isset($_POST["sbmt"]))
   mysqli_close($cn);
   if($q>0)
   {
-  echo "<script>alert('Record Save');</script>";
+    $sub=$_POST["t4"];
+
+      $message="
+      <html>
+      <body>
+      <p>Thank you for contacting plasma donator.
+      <p>Your subject: $sub
+
+      </body>
+      </html>
+      ";
+
+    echo "<script> M.toast({html: 'Record saved.',classes: 'rounded',classes: 'toasts'})</script>";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
+
+  mail( $_POST["t2"],'Contacting Plasma Donator',$message,$headers);
+    
   }
   else
-  {echo "<script>alert('Saving Record Failed');</script>";
+  {
+    echo "<script> M.toast({html: 'Error',classes: 'rounded',classes: 'toasts'})</script>";
   }
     
     } 

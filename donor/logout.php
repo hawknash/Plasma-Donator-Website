@@ -7,9 +7,11 @@
 
 <body>
 <?php
+session_start();
 		$_SESSION["email"]="";
 
 		$_SESSION['donorstatus']="";
+		session_destroy();
 		      header("location:../index.php");
 
 ?>
