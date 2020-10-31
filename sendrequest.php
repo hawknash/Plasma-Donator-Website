@@ -112,7 +112,7 @@ background-size: cover;
 </tr>
  
 <tr>
-  <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,12}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
+  <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,10}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
 </tr>
 
 <tr>
@@ -208,11 +208,11 @@ $s="select * from bloodgroup";
 <option value="31">31</option>
 </select>
 
-<input type="text" name="year" style=" width:50px"  /></td>
+<input type="text" name="year" style=" width:50px" required /></td>
 </tr>
 
 <tr>
-  <td  align="center">Detail</td><td><textarea name="t7"></textarea></td>
+  <td  align="center">Detail</td><td><textarea name="t7" required></textarea></td>
 </tr>
  
 <tr><td>&nbsp;</td>

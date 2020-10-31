@@ -153,11 +153,11 @@ $s="select * from bloodgroup";
  
 <tr>
   <td >Password</td>
-  <td><input type="password" name="t6" required="required" pattern="[a-zA-Z0-9]{5,10}" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" /></td>
+  <td><input type="password" name="t6" required="required" pattern="[a-zA-Z0-9]{5,10}" title="Length should be minimum 5 characters and contain number and alphabets" /></td>
 </tr>
 <tr>
   <td >Confirm Password</td>
-  <td><input type="password" name="t7" required="required" pattern="[a-zA-Z0-9]{5,10}" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" /></td>
+  <td><input type="password" name="t7" required="required" pattern="[a-zA-Z0-9]{5,10}" title="Length should be minimum 5 characters and contain number and alphabets" /></td>
 </tr>
 
 <tr>
@@ -229,16 +229,37 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     echo "$hashed";
       $s="insert into donarregistration(name,gender,age,mobile,city,b_id,email,pwd,pic) values('" . $_POST["t1"] ."','" . $_POST["r1"] . "','" . $_POST["t2"] . "','" . $_POST["t3"] . "','" . $_POST["city"] . "','" . $_POST["t4"] . "','" . $_POST["t5"] . "','$hashed','" . basename($_FILES["t8"]["name"])  ."')";
       
-      //$s="INSERT INTO donarregistration(name,gender,age,mobile,b_id,email,pswd,pic) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])"
+      
   mysqli_query($cn,$s);
   mysqli_close($cn);
-  if($s>0)
+  if($s>=0)
   {
+    $t=$_POST["t5"];
+
+    $message="
+      <html>
+      <body>
+      <h2> Thank you for registering as a donor.</h2>
+      <p>From Plasma Donator Team.   
+
+  
+      </body>
+      </html>
+      ";
+
+      $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <plasmadonator123@gmail.com>' . "\r\n";
+
+  mail($t,'Registration as a Donor',$message,$headers);
+
   echo "<script>M.toast({html: 'Record Saved',classes: 'rounded',classes: 'toasts'})</script>";
   }
   else
   {
-    echo "<script>M.toast({html: 'Record Saved',classes: 'rounded',classes: 'toasts'})</script>";
+    echo "<script>M.toast({html: 'Error',classes: 'rounded',classes: 'toasts'})</script>";
   }
     } 
    

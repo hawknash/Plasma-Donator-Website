@@ -108,7 +108,7 @@ background-size: cover;
 </tr>
  
 <tr>
-  <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,12}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
+  <td  align="center">Mobile No</td><td><input type="number" name="t3"  required="required" pattern="[0-9]{10,10}" title="please enter only numbers between 10 to 12 for mobile no." /></td>
 </tr>
 
 <tr>

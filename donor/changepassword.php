@@ -96,7 +96,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input pattern="[a-zA-Z0-9]{5,10}" onchange="setCustomValidity('')" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t2">
+      <input pattern="[a-zA-Z0-9]{5,10}" title="Length should be minimum 5 characters and contain number or alphabets" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t2">
     </div>
   </div>
 
@@ -107,7 +107,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input pattern="[a-zA-Z0-9]{5,10}" onchange="setCustomValidity('')" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" required class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" style="text-color:white !important;" id="inline-full-name" type="password"  name="t3">
+      <input pattern="[a-zA-Z0-9]{5,10}" title="Length should be minimum 5 characters and contain number and alphabets" required class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" style="text-color:white !important;" id="inline-full-name" type="password"  name="t3">
     </div>
   </div>
 
@@ -118,7 +118,7 @@ if($_SESSION['donorstatus']=="")
       </label>
     </div>
     <div class="md:w-2/3">
-      <input pattern="[a-zA-Z0-9]{5,10}" onchange="setCustomValidity('')" oninvalid="setCustomValidity('Length should be minimum 5 characters and contain number and alphabets')" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t4">
+      <input pattern="[a-zA-Z0-9]{5,10}" title="Length should be minimum 5 characters and contain number and alphabets" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="password"  name="t4">
     </div>
   </div>
   
